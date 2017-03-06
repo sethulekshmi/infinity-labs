@@ -18,14 +18,14 @@ function create (req, res, next, usersToSecurityContext) {
 
     return vehicleData.create(user_id)
     .then(function(v5cID) {
-        tracing.create('INFO', 'POST blockchain/assets/vehicles', 'Created asset');
+        tracing.create('INFO', 'POST blockchain/vehicles/vehicles', 'Created asset');
         let result = {};
         result.message = 'Creation Confirmed';
         result.v5cID = v5cID;
         res.end(JSON.stringify(result));
     })
     .catch(function(err) {
-        tracing.create('ERROR', 'POST blockchain/assets/vehicles', err.stack);
+        tracing.create('ERROR', 'POST blockchain/vehicles/vehicles', err.stack);
         res.send(JSON.stringify({'message':err.stack}));
     });
 }
