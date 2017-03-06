@@ -18,7 +18,7 @@ function create (req, res, next, usersToSecurityContext) {
 
     return vehicleData.create(user_id)
     .then(function(v5cID) {
-        tracing.create('INFO', 'POST blockchain/assets/vehicles', 'Created vehicle');
+        tracing.create('INFO', 'POST blockchain/assets/vehicles', 'Created asset');
         let result = {};
         result.message = 'Creation Confirmed';
         result.v5cID = v5cID;
