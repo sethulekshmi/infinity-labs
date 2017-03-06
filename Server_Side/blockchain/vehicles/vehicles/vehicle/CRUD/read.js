@@ -12,7 +12,7 @@ let read = function (req,res,next,usersToSecurityContext)
 {
     let v5cID = req.params.v5cID;
 
-    tracing.create('ENTER', 'GET blockchain/assets/vehicles/vehicle/'+v5cID, {});
+    tracing.create('ENTER', 'GET blockchain/vehicles/vehicles/vehicle/'+v5cID, {});
     if(typeof req.cookies.user != 'undefined')
     {
         req.session.user = req.cookies.user;
@@ -27,17 +27,17 @@ let read = function (req,res,next,usersToSecurityContext)
         let car = JSON.parse(data.toString());
         let result = {};
         result.vehicle = car;
-        tracing.create('EXIT', 'GET blockchain/assets/vehicles/vehicle/'+v5cID, result);
+        tracing.create('EXIT', 'GET blockchain/vehicles/vehicles/vehicle/'+v5cID, result);
         res.send(result.vehicle);
     })
     .catch(function(err) {
         res.status(400);
-        tracing.create('ERROR', 'GET blockchain/assets/vehicles/vehicle/'+v5cID, 'Unable to get vehicle. v5cID: '+ v5cID);
+        tracing.create('ERROR', 'GET blockchain/vehicles/vehicles/vehicle/'+v5cID, 'Unable to get vehicle. v5cID: '+ v5cID);
         let error = {};
         error.message = err;
         error.v5cID = v5cID;
         error.error = true;
-        tracing.create('ERROR', 'GET blockchain/assets/vehicles/vehicle/'+v5cID, error);
+        tracing.create('ERROR', 'GET blockchain/vehicles/vehicles/vehicle/'+v5cID, error);
         res.send(error);
     });
 };
